@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - GreenCollect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card admin-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>GreenCollect Admin</span>
+                </div>
+                <h2>Administrator Login</h2>
+                <p>Access the admin control panel</p>
+            </div>
+
+            <form id="adminLoginForm" class="auth-form active">
+                <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" placeholder="Enter admin username" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminRole">Role</label>
+                    <select id="adminRole" required>
+                        <option value="">Select your role</option>
+                        <option value="super_admin">Super Administrator</option>
+                        <option value="admin">Administrator</option>
+                        <option value="operator">Operator</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary admin-btn">Login to Admin Panel</button>
+            </form>
+
+            <div class="admin-info">
+                <div class="info-item">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Secure Access</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Session Timeout: 30 minutes</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-history"></i>
+                    <span>All activities are logged</span>
+                </div>
+            </div>
+
+            <div class="auth-footer">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Credentials Info -->
+    <div class="demo-credentials">
+        <h4>Demo Credentials</h4>
+        <p><strong>Username:</strong> admin</p>
+        <p><strong>Password:</strong> admin123</p>
+        <p><strong>Role:</strong> Super Administrator</p>
+    </div>
+
+    <script src="js/admin-auth.js"></script>
+</body>
+</html>

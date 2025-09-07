@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - GreenCollect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>GreenCollect</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#transactions" class="nav-link">Transactions</a>
+                <a href="#profile" class="nav-link">Profile</a>
+                <a href="#dustbins" class="nav-link">Dustbin Locations</a>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <span id="userName">John Doe</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <button onclick="logout()" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section active">
+            <div class="dashboard-header">
+                <h1>Welcome back, <span id="userNameHeader">John</span>!</h1>
+                <p>Track your environmental contribution and earnings</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalEarnings">₹1,250</h3>
+                        <p>Total Earnings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalWaste">45.5 kg</h3>
+                        <p>Waste Disposed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalTransactions">23</h3>
+                        <p>Total Disposals</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="ecoPoints">455</h3>
+                        <p>Eco Points</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Recent Disposals</h3>
+                    <div class="activity-list" id="recentActivity">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                            <div class="activity-info">
+                                <h4>Organic Waste</h4>
+                                <p>2.5 kg • ₹12.50 • Dustbin #DB001</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div class="activity-info">
+                                <h4>Recyclable Waste</h4>
+                                <p>1.8 kg • ₹9.00 • Dustbin #DB003</p>
+                                <span class="activity-time">1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                            <div class="activity-info">
+                                <h4>General Waste</h4>
+                                <p>3.2 kg • ₹16.00 • Dustbin #DB002</p>
+                                <span class="activity-time">2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Monthly Progress</h3>
+                    <div class="progress-chart">
+                        <div class="progress-item">
+                            <span>This Month</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span>15.2 kg</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Last Month</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <span>12.1 kg</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Goal</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span>20.0 kg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transactions Section -->
+        <section id="transactions" class="dashboard-section">
+            <div class="section-header">
+                <h2>Transaction History</h2>
+                <div class="filter-controls">
+                    <select id="monthFilter">
+                        <option value="all">All Months</option>
+                        <option value="current">Current Month</option>
+                        <option value="last">Last Month</option>
+                    </select>
+                    <select id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="organic">Organic</option>
+                        <option value="recyclable">Recyclable</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+            </div>
+            <div class="transactions-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Dustbin ID</th>
+                            <th>Waste Type</th>
+                            <th>Weight (kg)</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsList">
+                        <tr>
+                            <td>2024-01-15 14:30</td>
+                            <td>DB001</td>
+                            <td>Organic</td>
+                            <td>2.5</td>
+                            <td>₹12.50</td>
+                            <td><span class="status-paid">Paid</span></td>
+                        </tr>
+                        <tr>
+                            <td>2024-01-14 09:15</td>
+                            <td>DB003</td>
+                            <td>Recyclable</td>
+                            <td>1.8</td>
+                            <td>₹9.00</td>
+                            <td><span class="status-paid">Paid</span></td>
+                        </tr>
+                        <tr>
+                            <td>2024-01-13 16:45</td>
+                            <td>DB002</td>
+                            <td>General</td>
+                            <td>3.2</td>
+                            <td>₹16.00</td>
+                            <td><span class="status-pending">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="dashboard-section">
+            <div class="section-header">
+                <h2>Profile Information</h2>
+                <button class="btn-secondary" onclick="editProfile()">Edit Profile</button>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <h3>Personal Information</h3>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <label>Full Name</label>
+                            <span id="profileName">John Doe</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Aadhar Number</label>
+                            <span id="profileAadhar">****-****-1234</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone Number</label>
+                            <span id="profilePhone">+91 98765 43210</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Address</label>
+                            <span id="profileAddress">123 Village Road, District Name, State - 123456</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <h3>Bank Information</h3>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <label>Account Number</label>
+                            <span id="profileAccount">****-****-****-5678</span>
+                        </div>
+                        <div class="info-item">
+                            <label>IFSC Code</label>
+                            <span id="profileIFSC">SBIN0001234</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Account Status</label>
+                            <span class="status-active">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dustbin Locations Section -->
+        <section id="dustbins" class="dashboard-section">
+            <div class="section-header">
+                <h2>Dustbin Locations</h2>
+                <p>Find the nearest smart dustbins in your area</p>
+            </div>
+            <div class="dustbins-grid">
+                <div class="dustbin-card">
+                    <div class="dustbin-header">
+                        <h3>DB001</h3>
+                        <span class="status-active">Active</span>
+                    </div>
+                    <div class="dustbin-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Main Market Square</p>
+                        <p><i class="fas fa-clock"></i> Available 24/7</p>
+                        <p><i class="fas fa-percentage"></i> Capacity: 65%</p>
+                    </div>
+                    <div class="dustbin-actions">
+                        <button class="btn-secondary">View on Map</button>
+                    </div>
+                </div>
+                <div class="dustbin-card">
+                    <div class="dustbin-header">
+                        <h3>DB002</h3>
+                        <span class="status-active">Active</span>
+                    </div>
+                    <div class="dustbin-info">
+                        <p><i class="fas fa-map-marker-alt"></i> School Ground</p>
+                        <p><i class="fas fa-clock"></i> Available 6 AM - 8 PM</p>
+                        <p><i class="fas fa-percentage"></i> Capacity: 30%</p>
+                    </div>
+                    <div class="dustbin-actions">
+                        <button class="btn-secondary">View on Map</button>
+                    </div>
+                </div>
+                <div class="dustbin-card">
+                    <div class="dustbin-header">
+                        <h3>DB003</h3>
+                        <span class="status-maintenance">Maintenance</span>
+                    </div>
+                    <div class="dustbin-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Community Center</p>
+                        <p><i class="fas fa-clock"></i> Temporarily Unavailable</p>
+                        <p><i class="fas fa-percentage"></i> Under Repair</p>
+                    </div>
+                    <div class="dustbin-actions">
+                        <button class="btn-secondary" disabled>Unavailable</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>
