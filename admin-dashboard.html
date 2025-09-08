@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GreenCollect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>GreenCollect Admin</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#overview" class="nav-link active" onclick="showSection('overview')">Overview</a>
+                <a href="#users" class="nav-link" onclick="showSection('users')">Users</a>
+                <a href="#payments" class="nav-link" onclick="showSection('payments')">Payments</a>
+            </div>
+            <div class="admin-menu">
+                <span id="adminName">Admin</span>
+                <button onclick="adminLogout()" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <section id="overview" class="admin-section active">
+            <h1>Dashboard Overview</h1>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-users"></i></div>
+                    <div class="metric-info">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-weight"></i></div>
+                    <div class="metric-info">
+                        <h3 id="totalWaste">0 kg</h3>
+                        <p>Waste Collected</p>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="metric-info">
+                        <h3 id="totalPayments">₹0</h3>
+                        <p>Total Payments</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="users" class="admin-section">
+            <h2>User Management</h2>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Name</th><th>Phone</th><th>Earnings</th><th>Status</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="usersTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="payments" class="admin-section">
+            <h2>Payment Management</h2>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>User</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="paymentsTable"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

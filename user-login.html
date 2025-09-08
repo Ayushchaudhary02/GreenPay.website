@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - GreenCollect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+    <!-- Animated Background -->
+    <div class="auth-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <div class="auth-container">
+        <!-- Left Side - Branding & Info -->
+        <div class="auth-branding">
+            <div class="branding-content">
+                <div class="brand-logo">
+                    <div class="logo-circle">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h1>GreenCollect</h1>
+                    <p class="tagline">Turn Waste Into Wealth</p>
+                </div>
+                
+                <div class="features-showcase">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Earn Money</h3>
+                            <p>Get ₹5 per kg of waste disposed responsibly</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Smart Tracking</h3>
+                            <p>Real-time monitoring of your environmental impact</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Secure & Verified</h3>
+                            <p>Aadhar-based authentication for maximum security</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-preview">
+                    <div class="stat-item">
+                        <div class="stat-number">₹50K+</div>
+                        <div class="stat-label">Paid to Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2.5K+</div>
+                        <div class="stat-label">Kg Collected</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p>"GreenCollect has transformed how our village handles waste. I've earned ₹1,200 this month!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <strong>Priya Sharma</strong>
+                            <span>Village Resident</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login/Register Forms -->
+        <div class="auth-forms">
+            <div class="form-container">
+                <!-- Header -->
+                <div class="form-header">
+                    <div class="header-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h2>Welcome Back!</h2>
+                    <p>Join the green revolution and start earning today</p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="switchTab('login')" id="loginTab">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('register')" id="registerTab">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Register</span>
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-step active" id="loginStep1">
+                        <div class="step-header">
+                            <h3>Sign In to Your Account</h3>
+                            <p>Enter your credentials to continue your eco journey</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginAadhar">
+                                <i class="fas fa-id-card"></i>
+                                Aadhar Number
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="loginAadhar" placeholder="Enter your 12-digit Aadhar number" maxlength="12" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                            <div class="input-help">Your Aadhar number is encrypted and secure</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">
+                                <i class="fas fa-lock"></i>
+                                Password
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-eye toggle-password" onclick="togglePassword('loginPassword')"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="rememberMe">
+                                <span class="checkmark"></span>
+                                Remember me for 30 days
+                            </label>
+                            <a href="#" onclick="showForgotPassword()" class="forgot-link">
+                                <i class="fas fa-question-circle"></i>
+                                Forgot Password?
+                            </a>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-animated">
+                            <span class="btn-text">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Sign In Securely
+                            </span>
+                            <div class="btn-loader">
+                                <div class="spinner"></div>
+                            </div>
+                        </button>
+
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
+
+                        <div class="quick-login">
+                            <button type="button" class="quick-login-btn" onclick="quickLogin()">
+                                <i class="fas fa-bolt"></i>
+                                Try Demo Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <!-- Step 1: Basic Info -->
+                    <div class="form-step active" id="registerStep1">
+                        <div class="step-header">
+                            <div class="step-indicator">
+                                <div class="step-number">1</div>
+                                <div class="step-info">
+                                    <h4>Personal Information</h4>
+                                    <p>Let's start with your basic details</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regFullName">
+                                <i class="fas fa-user"></i>
+                                Full Name
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="regFullName" placeholder="Enter your full name as per Aadhar" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regAadhar">
+                                <i class="fas fa-id-card"></i>
+                                Aadhar Number
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="regAadhar" placeholder="Enter your 12-digit Aadhar number" maxlength="12" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                            <div class="input-help">
+                                <i class="fas fa-shield-alt"></i>
+                                Your Aadhar is used for identity verification only
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regPhone">
+                                <i class="fas fa-phone"></i>
+                                Phone Number
+                            </label>
+                            <div class="input-wrapper">
+                                <div class="phone-prefix">+91</div>
+                                <input type="tel" id="regPhone" placeholder="Enter your phone number" maxlength="10" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-primary btn-next" onclick="nextStep(2)">
+                            <span>Continue</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Step 2: Address & Verification -->
+                    <div class="form-step" id="registerStep2">
+                        <div class="step-header">
+                            <div class="step-indicator">
+                                <div class="step-number">2</div>
+                                <div class="step-info">
+                                    <h4>Address & Verification</h4>
+                                    <p>Help us verify your residence</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regAddress">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Complete Address
+                            </label>
+                            <div class="input-wrapper">
+                                <textarea id="regAddress" placeholder="House No., Street, Village/City, District, State - PIN" rows="3" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regProof">
+                                    <i class="fas fa-file-alt"></i>
+                                    Residence Proof Type
+                                </label>
+                                <div class="select-wrapper">
+                                    <select id="regProof" required>
+                                        <option value="">Select proof type</option>
+                                        <option value="aadhar">Aadhar Card</option>
+                                        <option value="voter">Voter ID Card</option>
+                                        <option value="ration">Ration Card</option>
+                                        <option value="electricity">Electricity Bill</option>
+                                        <option value="water">Water Bill</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="regProofNumber">
+                                    <i class="fas fa-hashtag"></i>
+                                    Proof Number
+                                </label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="regProofNumber" placeholder="Enter document number" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn-secondary btn-back" onclick="prevStep(1)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="button" class="btn-primary btn-next" onclick="nextStep(3)">
+                                <span>Continue</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Banking Details -->
+                    <div class="form-step" id="registerStep3">
+                        <div class="step-header">
+                            <div class="step-indicator">
+                                <div class="step-number">3</div>
+                                <div class="step-info">
+                                    <h4>Banking Information</h4>
+                                    <p>Where should we send your earnings?</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="banking-info">
+                            <div class="info-card">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <h4>Secure Banking</h4>
+                                    <p>Your banking details are encrypted and stored securely</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regBankAccount">
+                                <i class="fas fa-credit-card"></i>
+                                Bank Account Number
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="regBankAccount" placeholder="Enter your bank account number" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regIFSC">
+                                <i class="fas fa-code"></i>
+                                IFSC Code
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="regIFSC" placeholder="Enter bank IFSC code (e.g., SBIN0001234)" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                            <div class="input-help">
+                                <i class="fas fa-info-circle"></i>
+                                You can find IFSC code on your checkbook or bank passbook
+                            </div>
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn-secondary btn-back" onclick="prevStep(2)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="button" class="btn-primary btn-next" onclick="nextStep(4)">
+                                <span>Continue</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Security -->
+                    <div class="form-step" id="registerStep4">
+                        <div class="step-header">
+                            <div class="step-indicator">
+                                <div class="step-number">4</div>
+                                <div class="step-info">
+                                    <h4>Account Security</h4>
+                                    <p>Create a strong password to protect your account</p>
+                                </div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regPassword">
+                                <i class="fas fa-lock"></i>
+                                Create Password
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="password" id="regPassword" placeholder="Create a strong password" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-eye toggle-password" onclick="togglePassword('regPassword')"></i>
+                                </div>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <div class="strength-text">Password strength: <span id="strengthText">Weak</span></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regConfirmPassword">
+                                <i class="fas fa-lock"></i>
+                                Confirm Password
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-check-circle valid-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terms-agreement">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="agreeTerms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" onclick="showTerms()">Terms & Conditions</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn-secondary btn-back" onclick="prevStep(3)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="submit" class="btn-primary btn-animated">
+                                <span class="btn-text">
+                                    <i class="fas fa-user-plus"></i>
+                                    Create Account
+                                </span>
+                                <div class="btn-loader">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Footer -->
+                <div class="form-footer">
+                    <div class="back-to-home">
+                        <a href="index.html">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Home
+                        </a>
+                    </div>
+                    
+                    <div class="security-badges">
+                        <div class="security-badge">
+                            <i class="fas fa-shield-check"></i>
+                            <span>256-bit SSL</span>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Encrypted</span>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fas fa-user-shield"></i>
+                            <span>GDPR Compliant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Modals -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content modern-modal">
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3 id="modalTitle">Success!</h3>
+                <p id="modalMessage">Your action was completed successfully.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="closeModal()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <h3>Processing...</h3>
+            <p id="loadingMessage">Please wait while we process your request</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize demo data
+        if (!localStorage.getItem('users')) {
+            const demoUsers = [
+                {
+                    id: 'USR001',
+                    fullName: 'Raj Kumar',
+                    aadhar: '123456789012',
+                    phone: '9876543210',
+                    address: '123 Village Road, District Name, State - 123456',
+                    bankAccount: '1234567890123456',
+                    ifsc: 'SBIN0001234',
+                    password: 'demo123',
+                    status: 'active',
+                    totalEarnings: 1250,
+                    totalWaste: 45.5,
+                    totalTransactions: 23,
+                    ecoPoints: 455
+                }
+            ];
+            localStorage.setItem('users', JSON.stringify(demoUsers));
+        }
+
+        let currentStep = 1;
+        let isLoading = false;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Enhanced user login page loaded');
+            
+            // Add loading class after short delay
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Initialize form validations
+            setupFormValidation();
+            
+            // Setup input animations
+            setupInputAnimations();
+            
+            // Start background animations
+            startBackgroundAnimations();
+        });
+
+        // Tab switching with animation
+        function switchTab(tab) {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            
+            // Remove active classes
+            loginTab.classList.remove('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('active');
+            registerForm.classList.remove('active');
+            
+            // Add slide out animation
+            const activeForm = document.querySelector('.auth-form.active');
+            if (activeForm) {
+                activeForm.style.transform = 'translateX(-100%)';
+                activeForm.style.opacity = '0';
+            }
+            
+            setTimeout(() => {
+                if (tab === 'login') {
+                    loginTab.classList.add('active');
+                    loginForm.classList.add('active');
+                    currentStep = 1;
+                } else {
+                    registerTab.classList.add('active');
+                    registerForm.classList.add('active');
+                    currentStep = 1;
+                    showStep(1);
+                }
+                
+                // Slide in animation
+                const newActiveForm = document.querySelector('.auth-form.active');
+                if (newActiveForm) {
+                    newActiveForm.style.transform = 'translateX(0)';
+                    newActiveForm.style.opacity = '1';
+                }
+            }, 300);
+        }
+
+        // Multi-step registration
+        function nextStep(step) {
+            if (validateCurrentStep()) {
+                showStep(step);
+                currentStep = step;
+            }
+        }
+
+        function prevStep(step) {
+            showStep(step);
+            currentStep = step;
+        }
+
+        function showStep(stepNumber) {
+            const steps = document.querySelectorAll('.form-step');
+            steps.forEach((step, index) => {
+                if (index + 1 === stepNumber) {
+                    step.classList.add('active');
+                    step.style.transform = 'translateX(0)';
+                    step.style.opacity = '1';
+                } else {
+                    step.classList.remove('active');
+                    step.style.transform = 'translateX(100%)';
+                    step.style.opacity = '0';
+                }
+            });
+        }
+
+        function validateCurrentStep() {
+            const currentStepElement = document.querySelector(`#registerStep${currentStep}`);
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    showFieldError(input, 'This field is required');
+                    isValid = false;
+                } else {
+                    clearFieldError(input);
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Form validation setup
+        function setupFormValidation() {
+            // Aadhar validation
+            const aadharInputs = document.querySelectorAll('input[id*="Aadhar"]');
+            aadharInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.value = this.value.replace(/\D/g, '');
+                    if (this.value.length > 12) {
+                        this.value = this.value.substring(0, 12);
+                    }
+                    validateAadhar(this);
+                });
+            });
+
+            // Phone validation
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.value = this.value.replace(/\D/g, '');
+                    if (this.value.length > 10) {
+                        this.value = this.value.substring(0, 10);
+                    }
+                    validatePhone(this);
+                });
+            });
+
+            // Password strength
+            const passwordInput = document.getElementById('regPassword');
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    checkPasswordStrength(this.value);
+                });
+            }
+
+            // Confirm password
+            const confirmPasswordInput = document.getElementById('regConfirmPassword');
+            if (confirmPasswordInput) {
+                confirmPasswordInput.addEventListener('input', function() {
+                    validatePasswordMatch();
+                });
+            }
+        }
+
+        function setupInputAnimations() {
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentNode.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentNode.classList.remove('focused');
+                    }
+                });
+                
+                // Check if input has value on load
+                if (input.value) {
+                    input.parentNode.classList.add('focused');
+                }
+            });
+        }
+
+        function validateAadhar(input) {
+            const aadhar = input.value;
+            const isValid = /^\d{12}$/.test(aadhar);
+            
+            if (aadhar.length === 12) {
+                if (isValid) {
+                    showFieldSuccess(input);
+                } else {
+                    showFieldError(input, 'Invalid Aadhar number format');
+                }
+            } else {
+                clearFieldError(input);
+            }
+            
+            return isValid;
+        }
+
+        function validatePhone(input) {
+            const phone = input.value;
+            const isValid = /^[6-9]\d{9}$/.test(phone);
+            
+            if (phone.length === 10) {
+                if (isValid) {
+                    showFieldSuccess(input);
+                } else {
+                    showFieldError(input, 'Invalid phone number');
+                }
+            } else {
+                clearFieldError(input);
+            }
+            
+            return isValid;
+        }
+
+        function checkPasswordStrength(password) {
+            const strengthBar = document.querySelector('.strength-fill');
+            const strengthText = document.getElementById('strengthText');
+            
+            let strength = 0;
+            let strengthLabel = 'Weak';
+            let color = '#ef4444';
+            
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            if (strength >= 4) {
+                strengthLabel = 'Strong';
+                color = '#10b981';
+            } else if (strength >= 3) {
+                strengthLabel = 'Good';
+                color = '#f59e0b';
+            } else if (strength >= 2) {
+                strengthLabel = 'Fair';
+                color = '#f97316';
+            }
+            
+            const percentage = (strength / 5) * 100;
+            strengthBar.style.width = percentage + '%';
+            strengthBar.style.backgroundColor = color;
+            strengthText.textContent = strengthLabel;
+        }
+
+        function validatePasswordMatch() {
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            const confirmInput = document.getElementById('regConfirmPassword');
+            
+            if (confirmPassword && password !== confirmPassword) {
+                showFieldError(confirmInput, 'Passwords do not match');
+                return false;
+            } else if (confirmPassword && password === confirmPassword) {
+                showFieldSuccess(confirmInput);
+                return true;
+            }
+            
+            return true;
+        }
+
+        function showFieldError(input, message) {
+            clearFieldError(input);
+            
+            const wrapper = input.closest('.input-wrapper') || input.parentNode;
+            wrapper.classList.add('error');
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'field-error';
+            errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+            
+            wrapper.appendChild(errorDiv);
+        }
+
+        function showFieldSuccess(input) {
+            clearFieldError(input);
+            
+            const wrapper = input.closest('.input-wrapper') || input.parentNode;
+            wrapper.classList.add('success');
+            wrapper.classList.remove('error');
+        }
+
+        function clearFieldError(input) {
+            const wrapper = input.closest('.input-wrapper') || input.parentNode;
+            wrapper.classList.remove('error', 'success');
+            
+            const existingError = wrapper.querySelector('.field-error');
+            if (existingError) {
+                existingError.remove();
+            }
+        }
+
+        // Password visibility toggle
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('.toggle-password');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Quick demo login
+        function quickLogin() {
+            document.getElementById('loginAadhar').value = '123456789012';
+            document.getElementById('loginPassword').value = 'demo123';
+            
+            // Add visual feedback
+            showMessage('Demo credentials filled! Click "Sign In Securely" to continue.', 'info');
+        }
+
+        // Handle login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (isLoading) return;
+            
+            const aadhar = document.getElementById('loginAadhar').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!aadhar || !password) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (aadhar.length !== 12) {
+                showMessage('Please enter a valid 12-digit Aadhar number', 'error');
+                return;
+            }
+            
+            startLoading('Verifying your credentials...');
+            
+            setTimeout(() => {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const user = users.find(u => u.aadhar === aadhar && u.password === password);
+                
+                if (user) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    showMessage('Welcome back! Redirecting to your dashboard...', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'user-dashboard.html';
+                    }, 2000);
+                } else {
+                    showMessage('Invalid credentials. Please check your Aadhar number and password.', 'error');
+                }
+                
+                stopLoading();
+            }, 2000);
+        });
+
+        // Handle registration
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (isLoading) return;
+            
+            const formData = {
+                fullName: document.getElementById('regFullName').value,
+                aadhar: document.getElementById('regAadhar').value,
+                phone: document.getElementById('regPhone').value,
+                address: document.getElementById('regAddress').value,
+                proofType: document.getElementById('regProof').value,
+                proofNumber: document.getElementById('regProofNumber').value,
+                bankAccount: document.getElementById('regBankAccount').value,
+                ifsc: document.getElementById('regIFSC').value,
+                password: document.getElementById('regPassword').value,
+                confirmPassword: document.getElementById('regConfirmPassword').value
+            };
+            
+            if (!validateRegistrationForm(formData)) {
+                return;
+            }
+            
+            startLoading('Creating your account...');
+            
+            setTimeout(() => {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const existingUser = users.find(u => u.aadhar === formData.aadhar);
+                
+                if (existingUser) {
+                    showMessage('An account with this Aadhar number already exists', 'error');
+                    stopLoading();
+                    return;
+                }
+                
+                const newUser = {
+                    id: 'USR' + String(users.length + 1).padStart(3, '0'),
+                    ...formData,
+                    registrationDate: new Date().toISOString(),
+                    status: 'active',
+                    totalEarnings: 0,
+                    totalWaste: 0,
+                    totalTransactions: 0,
+                    ecoPoints: 0
+                };
+                
+                delete newUser.confirmPassword;
+                
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                showMessage('Account created successfully! You can now sign in with your credentials.', 'success');
+                
+                setTimeout(() => {
+                    switchTab('login');
+                    document.getElementById('registerForm').reset();
+                    showStep(1);
+                    currentStep = 1;
+                }, 3000);
+                
+                stopLoading();
+            }, 3000);
+        });
+
+        function validateRegistrationForm(data) {
+            // Check required fields
+            for (const [key, value] of Object.entries(data)) {
+                if (!value.trim()) {
+                    showMessage('Please fill in all fields', 'error');
+                    return false;
+                }
+            }
+            
+            // Validate Aadhar
+            if (!validateAadhar(document.getElementById('regAadhar'))) {
+                showMessage('Please enter a valid 12-digit Aadhar number', 'error');
+                return false;
+            }
+            
+            // Validate phone
+            if (!validatePhone(document.getElementById('regPhone'))) {
+                showMessage('Please enter a valid 10-digit phone number', 'error');
+                return false;
+            }
+            
+            // Validate password match
+            if (!validatePasswordMatch()) {
+                showMessage('Passwords do not match', 'error');
+                return false;
+            }
+            
+            // Check terms agreement
+            if (!document.getElementById('agreeTerms').checked) {
+                showMessage('Please agree to the Terms & Conditions', 'error');
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Loading states
+        function startLoading(message = 'Processing...') {
+            isLoading = true;
+            document.getElementById('loadingMessage').textContent = message;
+            document.getElementById('loadingOverlay').classList.add('active');
+        }
+
+        function stopLoading() {
+            isLoading = false;
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        // Message modal
+        function showMessage(message, type) {
+            const modal = document.getElementById('messageModal');
+            const icon = document.getElementById('modalIcon');
+            const title = document.getElementById('modalTitle');
+            const messageEl = document.getElementById('modalMessage');
+            
+            // Set icon and title based on type
+            if (type === 'success') {
+                icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                icon.className = 'modal-icon success';
+                title.textContent = 'Success!';
+            } else if (type === 'error') {
+                icon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+                icon.className = 'modal-icon error';
+                title.textContent = 'Oops!';
+            } else {
+                icon.innerHTML = '<i class="fas fa-info-circle"></i>';
+                icon.className = 'modal-icon info';
+                title.textContent = 'Information';
+            }
+            
+            messageEl.textContent = message;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').classList.remove('active');
+        }
+
+        // Background animations
+        function startBackgroundAnimations() {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                shape.style.animationDelay = `${index * 0.5}s`;
+            });
+        }
+
+        // Utility functions
+        function showForgotPassword() {
+            showMessage('Please contact the administrator at +91 98765 43210 to reset your password.', 'info');
+        }
+
+        function showTerms() {
+            showMessage('Terms & Conditions: By using GreenCollect, you agree to dispose waste responsibly and maintain account security.', 'info');
+        }
+
+        function showPrivacy() {
+            showMessage('Privacy Policy: Your personal information is encrypted and used only for account verification and payment processing.', 'info');
+        }
+
+        // Close modal on outside click
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('messageModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        console.log('Enhanced user login page fully loaded');
+    </script>
+</body>
+</html>
