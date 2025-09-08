@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Garbage Collection - Promoting Clean Environment</title>
+    <title>GreenCollect - Garbage Collection & Reward System</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
                 <i class="fas fa-leaf"></i>
                 <span>GreenCollect</span>
             </div>
-            <div class="nav-menu">
+            <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#services" class="nav-link">Services</a>
@@ -23,7 +23,7 @@
                 <a href="user-login.html" class="nav-link login-btn">User Login</a>
                 <a href="admin-login.html" class="nav-link admin-btn">Admin</a>
             </div>
-            <div class="hamburger">
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -43,15 +43,15 @@
         </div>
         <div class="hero-stats">
             <div class="stat">
-                <h3>₹50,000+</h3>
+                <h3 data-target="50000">₹0+</h3>
                 <p>Paid to Users</p>
             </div>
             <div class="stat">
-                <h3>2,500kg</h3>
+                <h3 data-target="2500">0kg</h3>
                 <p>Waste Collected</p>
             </div>
             <div class="stat">
-                <h3>150+</h3>
+                <h3 data-target="150">0+</h3>
                 <p>Active Users</p>
             </div>
         </div>
@@ -152,10 +152,10 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <form id="contactForm">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                         <button type="submit" class="btn-primary">Send Message</button>
                     </form>
                 </div>
@@ -198,6 +198,92 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Simple and error-free JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('GreenCollect website loaded successfully');
+            
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#home' || targetId === '#about' || targetId === '#services' || targetId === '#contact') {
+                        e.preventDefault();
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            const offsetTop = targetSection.offsetTop - 80;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
+
+            // Animate statistics
+            const stats = document.querySelectorAll('.stat h3');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                if (target) {
+                    animateNumber(stat, target);
+                }
+            });
+
+            function animateNumber(element, target) {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (element.textContent.includes('₹')) {
+                        element.textContent = `₹${Math.floor(current).toLocaleString()}+`;
+                    } else if (element.textContent.includes('kg')) {
+                        element.textContent = `${Math.floor(current).toLocaleString()}kg`;
+                    } else {
+                        element.textContent = `${Math.floor(current)}+`;
+                    }
+                }, 20);
+            }
+
+            // Scroll effect for navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    if (window.scrollY > 100) {
+                        navbar.style.background = 'rgba(44, 85, 48, 0.95)';
+                    } else {
+                        navbar.style.background = 'linear-gradient(135deg, #2c5530, #4a7c59)';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

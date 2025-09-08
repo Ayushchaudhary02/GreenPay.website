@@ -28,47 +28,100 @@
                     <label for="adminPassword">Password</label>
                     <input type="password" id="adminPassword" placeholder="Enter admin password" required>
                 </div>
-                <div class="form-group">
-                    <label for="adminRole">Role</label>
-                    <select id="adminRole" required>
-                        <option value="">Select your role</option>
-                        <option value="super_admin">Super Administrator</option>
-                        <option value="admin">Administrator</option>
-                        <option value="operator">Operator</option>
-                    </select>
-                </div>
                 <button type="submit" class="btn-primary admin-btn">Login to Admin Panel</button>
             </form>
-
-            <div class="admin-info">
-                <div class="info-item">
-                    <i class="fas fa-shield-check"></i>
-                    <span>Secure Access</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Session Timeout: 30 minutes</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-history"></i>
-                    <span>All activities are logged</span>
-                </div>
-            </div>
 
             <div class="auth-footer">
                 <a href="index.html">← Back to Home</a>
             </div>
+
+            <!-- Demo Credentials -->
+            <div class="demo-info" style="margin-top: 20px; padding: 15px; background: #ffe8e8; border-radius: 8px; font-size: 14px;">
+                <strong>Demo Admin Login:</strong><br>
+                Username: admin<br>
+                Password: admin123
+            </div>
         </div>
     </div>
 
-    <!-- Demo Credentials Info -->
-    <div class="demo-credentials">
-        <h4>Demo Credentials</h4>
-        <p><strong>Username:</strong> admin</p>
-        <p><strong>Password:</strong> admin123</p>
-        <p><strong>Role:</strong> Super Administrator</p>
-    </div>
+    <script>
+        // Initialize demo admin data
+        if (!localStorage.getItem('adminUsers')) {
+            const demoAdmins = [
+                {
+                    id: 'ADM001',
+                    username: 'admin',
+                    password: 'admin123',
+                    fullName: 'System Administrator',
+                    role: 'super_admin'
+                }
+            ];
+            localStorage.setItem('adminUsers', JSON.stringify(demoAdmins));
+        }
 
-    <script src="js/admin-auth.js"></script>
+        // Handle admin login
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (!username || !password) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            const admins = JSON.parse(localStorage.getItem('adminUsers') || '[]');
+            const admin = admins.find(a => a.username === username && a.password === password);
+            
+            if (admin) {
+                localStorage.setItem('currentAdmin', JSON.stringify(admin));
+                showMessage('Login successful! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'admin-dashboard.html';
+                }, 1500);
+            } else {
+                showMessage('Invalid credentials', 'error');
+            }
+        });
+
+        // Show message function
+        function showMessage(message, type) {
+            const existingMessage = document.querySelector('.message-popup');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-popup';
+            messageDiv.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? '#28a745' : '#dc3545'};
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    z-index: 1000;
+                    font-size: 14px;
+                    max-width: 300px;
+                ">
+                    ${message}
+                </div>
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                if (document.body.contains(messageDiv)) {
+                    messageDiv.remove();
+                }
+            }, 4000);
+        }
+
+        console.log('Admin login page loaded successfully');
+    </script>
 </body>
 </html>

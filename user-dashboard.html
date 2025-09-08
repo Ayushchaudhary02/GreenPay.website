@@ -16,14 +16,13 @@
                 <span>GreenCollect</span>
             </div>
             <div class="nav-menu">
-                <a href="#dashboard" class="nav-link active">Dashboard</a>
-                <a href="#transactions" class="nav-link">Transactions</a>
-                <a href="#profile" class="nav-link">Profile</a>
-                <a href="#dustbins" class="nav-link">Dustbin Locations</a>
+                <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">Dashboard</a>
+                <a href="#transactions" class="nav-link" onclick="showSection('transactions')">Transactions</a>
+                <a href="#profile" class="nav-link" onclick="showSection('profile')">Profile</a>
             </div>
             <div class="user-menu">
                 <div class="user-info">
-                    <span id="userName">John Doe</span>
+                    <span id="userName">User</span>
                     <i class="fas fa-user-circle"></i>
                 </div>
                 <button onclick="logout()" class="logout-btn">
@@ -37,7 +36,7 @@
         <!-- Dashboard Section -->
         <section id="dashboard" class="dashboard-section active">
             <div class="dashboard-header">
-                <h1>Welcome back, <span id="userNameHeader">John</span>!</h1>
+                <h1>Welcome back, <span id="userNameHeader">User</span>!</h1>
                 <p>Track your environmental contribution and earnings</p>
             </div>
 
@@ -48,7 +47,7 @@
                         <i class="fas fa-wallet"></i>
                     </div>
                     <div class="stat-info">
-                        <h3 id="totalEarnings">₹1,250</h3>
+                        <h3 id="totalEarnings">₹0</h3>
                         <p>Total Earnings</p>
                     </div>
                 </div>
@@ -57,7 +56,7 @@
                         <i class="fas fa-weight"></i>
                     </div>
                     <div class="stat-info">
-                        <h3 id="totalWaste">45.5 kg</h3>
+                        <h3 id="totalWaste">0 kg</h3>
                         <p>Waste Disposed</p>
                     </div>
                 </div>
@@ -66,7 +65,7 @@
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <div class="stat-info">
-                        <h3 id="totalTransactions">23</h3>
+                        <h3 id="totalTransactions">0</h3>
                         <p>Total Disposals</p>
                     </div>
                 </div>
@@ -75,7 +74,7 @@
                         <i class="fas fa-leaf"></i>
                     </div>
                     <div class="stat-info">
-                        <h3 id="ecoPoints">455</h3>
+                        <h3 id="ecoPoints">0</h3>
                         <p>Eco Points</p>
                     </div>
                 </div>
@@ -86,62 +85,26 @@
                 <div class="dashboard-card">
                     <h3>Recent Disposals</h3>
                     <div class="activity-list" id="recentActivity">
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-trash"></i>
-                            </div>
-                            <div class="activity-info">
-                                <h4>Organic Waste</h4>
-                                <p>2.5 kg • ₹12.50 • Dustbin #DB001</p>
-                                <span class="activity-time">2 hours ago</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-recycle"></i>
-                            </div>
-                            <div class="activity-info">
-                                <h4>Recyclable Waste</h4>
-                                <p>1.8 kg • ₹9.00 • Dustbin #DB003</p>
-                                <span class="activity-time">1 day ago</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-trash-alt"></i>
-                            </div>
-                            <div class="activity-info">
-                                <h4>General Waste</h4>
-                                <p>3.2 kg • ₹16.00 • Dustbin #DB002</p>
-                                <span class="activity-time">2 days ago</span>
-                            </div>
-                        </div>
+                        <p>No recent activity found.</p>
                     </div>
                 </div>
 
                 <div class="dashboard-card">
-                    <h3>Monthly Progress</h3>
-                    <div class="progress-chart">
-                        <div class="progress-item">
-                            <span>This Month</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 75%"></div>
+                    <h3>Available Dustbins</h3>
+                    <div class="dustbin-list">
+                        <div class="dustbin-item">
+                            <div class="dustbin-info">
+                                <h4>DB001 - Main Market</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Main Market Square</p>
+                                <p><i class="fas fa-signal"></i> Status: <span class="status-active">Active</span></p>
                             </div>
-                            <span>15.2 kg</span>
                         </div>
-                        <div class="progress-item">
-                            <span>Last Month</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 60%"></div>
+                        <div class="dustbin-item">
+                            <div class="dustbin-info">
+                                <h4>DB002 - School Ground</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Near School</p>
+                                <p><i class="fas fa-signal"></i> Status: <span class="status-active">Active</span></p>
                             </div>
-                            <span>12.1 kg</span>
-                        </div>
-                        <div class="progress-item">
-                            <span>Goal</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 100%"></div>
-                            </div>
-                            <span>20.0 kg</span>
                         </div>
                     </div>
                 </div>
@@ -152,19 +115,6 @@
         <section id="transactions" class="dashboard-section">
             <div class="section-header">
                 <h2>Transaction History</h2>
-                <div class="filter-controls">
-                    <select id="monthFilter">
-                        <option value="all">All Months</option>
-                        <option value="current">Current Month</option>
-                        <option value="last">Last Month</option>
-                    </select>
-                    <select id="typeFilter">
-                        <option value="all">All Types</option>
-                        <option value="organic">Organic</option>
-                        <option value="recyclable">Recyclable</option>
-                        <option value="general">General</option>
-                    </select>
-                </div>
             </div>
             <div class="transactions-table">
                 <table>
@@ -172,7 +122,6 @@
                         <tr>
                             <th>Date</th>
                             <th>Dustbin ID</th>
-                            <th>Waste Type</th>
                             <th>Weight (kg)</th>
                             <th>Amount</th>
                             <th>Status</th>
@@ -180,28 +129,7 @@
                     </thead>
                     <tbody id="transactionsList">
                         <tr>
-                            <td>2024-01-15 14:30</td>
-                            <td>DB001</td>
-                            <td>Organic</td>
-                            <td>2.5</td>
-                            <td>₹12.50</td>
-                            <td><span class="status-paid">Paid</span></td>
-                        </tr>
-                        <tr>
-                            <td>2024-01-14 09:15</td>
-                            <td>DB003</td>
-                            <td>Recyclable</td>
-                            <td>1.8</td>
-                            <td>₹9.00</td>
-                            <td><span class="status-paid">Paid</span></td>
-                        </tr>
-                        <tr>
-                            <td>2024-01-13 16:45</td>
-                            <td>DB002</td>
-                            <td>General</td>
-                            <td>3.2</td>
-                            <td>₹16.00</td>
-                            <td><span class="status-pending">Pending</span></td>
+                            <td colspan="5" style="text-align: center; padding: 20px;">No transactions found</td>
                         </tr>
                     </tbody>
                 </table>
@@ -212,7 +140,6 @@
         <section id="profile" class="dashboard-section">
             <div class="section-header">
                 <h2>Profile Information</h2>
-                <button class="btn-secondary" onclick="editProfile()">Edit Profile</button>
             </div>
             <div class="profile-grid">
                 <div class="profile-card">
@@ -220,19 +147,19 @@
                     <div class="profile-info">
                         <div class="info-item">
                             <label>Full Name</label>
-                            <span id="profileName">John Doe</span>
+                            <span id="profileName">-</span>
                         </div>
                         <div class="info-item">
                             <label>Aadhar Number</label>
-                            <span id="profileAadhar">****-****-1234</span>
+                            <span id="profileAadhar">-</span>
                         </div>
                         <div class="info-item">
                             <label>Phone Number</label>
-                            <span id="profilePhone">+91 98765 43210</span>
+                            <span id="profilePhone">-</span>
                         </div>
                         <div class="info-item">
                             <label>Address</label>
-                            <span id="profileAddress">123 Village Road, District Name, State - 123456</span>
+                            <span id="profileAddress">-</span>
                         </div>
                     </div>
                 </div>
@@ -241,11 +168,11 @@
                     <div class="profile-info">
                         <div class="info-item">
                             <label>Account Number</label>
-                            <span id="profileAccount">****-****-****-5678</span>
+                            <span id="profileAccount">-</span>
                         </div>
                         <div class="info-item">
                             <label>IFSC Code</label>
-                            <span id="profileIFSC">SBIN0001234</span>
+                            <span id="profileIFSC">-</span>
                         </div>
                         <div class="info-item">
                             <label>Account Status</label>
@@ -255,60 +182,155 @@
                 </div>
             </div>
         </section>
-
-        <!-- Dustbin Locations Section -->
-        <section id="dustbins" class="dashboard-section">
-            <div class="section-header">
-                <h2>Dustbin Locations</h2>
-                <p>Find the nearest smart dustbins in your area</p>
-            </div>
-            <div class="dustbins-grid">
-                <div class="dustbin-card">
-                    <div class="dustbin-header">
-                        <h3>DB001</h3>
-                        <span class="status-active">Active</span>
-                    </div>
-                    <div class="dustbin-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Main Market Square</p>
-                        <p><i class="fas fa-clock"></i> Available 24/7</p>
-                        <p><i class="fas fa-percentage"></i> Capacity: 65%</p>
-                    </div>
-                    <div class="dustbin-actions">
-                        <button class="btn-secondary">View on Map</button>
-                    </div>
-                </div>
-                <div class="dustbin-card">
-                    <div class="dustbin-header">
-                        <h3>DB002</h3>
-                        <span class="status-active">Active</span>
-                    </div>
-                    <div class="dustbin-info">
-                        <p><i class="fas fa-map-marker-alt"></i> School Ground</p>
-                        <p><i class="fas fa-clock"></i> Available 6 AM - 8 PM</p>
-                        <p><i class="fas fa-percentage"></i> Capacity: 30%</p>
-                    </div>
-                    <div class="dustbin-actions">
-                        <button class="btn-secondary">View on Map</button>
-                    </div>
-                </div>
-                <div class="dustbin-card">
-                    <div class="dustbin-header">
-                        <h3>DB003</h3>
-                        <span class="status-maintenance">Maintenance</span>
-                    </div>
-                    <div class="dustbin-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Community Center</p>
-                        <p><i class="fas fa-clock"></i> Temporarily Unavailable</p>
-                        <p><i class="fas fa-percentage"></i> Under Repair</p>
-                    </div>
-                    <div class="dustbin-actions">
-                        <button class="btn-secondary" disabled>Unavailable</button>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <script src="js/user-dashboard.js"></script>
+    <script>
+        // Check authentication
+        const currentUser = localStorage.getItem('currentUser');
+        if (!currentUser) {
+            window.location.href = 'user-login.html';
+        }
+
+        const user = JSON.parse(currentUser);
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('User dashboard loaded for:', user.fullName);
+            
+            // Update user info
+            const userNameEl = document.getElementById('userName');
+            const userNameHeaderEl = document.getElementById('userNameHeader');
+            
+            if (userNameEl) userNameEl.textContent = user.fullName;
+            if (userNameHeaderEl) userNameHeaderEl.textContent = user.fullName.split(' ')[0];
+            
+            // Update stats
+            document.getElementById('totalEarnings').textContent = `₹${user.totalEarnings.toLocaleString()}`;
+            document.getElementById('totalWaste').textContent = `${user.totalWaste} kg`;
+            document.getElementById('totalTransactions').textContent = user.totalTransactions;
+            document.getElementById('ecoPoints').textContent = user.ecoPoints;
+            
+            // Update profile
+            document.getElementById('profileName').textContent = user.fullName;
+            document.getElementById('profileAadhar').textContent = `****-****-${user.aadhar.slice(-4)}`;
+            document.getElementById('profilePhone').textContent = `+91 ${user.phone}`;
+            document.getElementById('profileAddress').textContent = user.address;
+            document.getElementById('profileAccount').textContent = `****-****-****-${user.bankAccount.slice(-4)}`;
+            document.getElementById('profileIFSC').textContent = user.ifsc;
+            
+            // Load transactions
+            loadTransactions();
+            loadRecentActivity();
+        });
+
+        // Show section
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.dashboard-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Show target section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Add active to clicked nav link
+            event.target.classList.add('active');
+        }
+
+        // Load transactions
+        function loadTransactions() {
+            const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+            const userTransactions = transactions.filter(t => t.userId === user.id);
+            
+            const tbody = document.getElementById('transactionsList');
+            tbody.innerHTML = '';
+            
+            if (userTransactions.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px;">No transactions found</td></tr>';
+                return;
+            }
+            
+            userTransactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${new Date(transaction.date).toLocaleDateString()}</td>
+                    <td>${transaction.dustbinId}</td>
+                    <td>${transaction.weight}</td>
+                    <td>₹${transaction.amount}</td>
+                    <td><span class="status-${transaction.status}">${transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load recent activity
+        function loadRecentActivity() {
+            const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+            const userTransactions = transactions.filter(t => t.userId === user.id).slice(0, 3);
+            
+            const activityContainer = document.getElementById('recentActivity');
+            
+            if (userTransactions.length === 0) {
+                activityContainer.innerHTML = '<p>No recent activity found.</p>';
+                return;
+            }
+            
+            activityContainer.innerHTML = '';
+            userTransactions.forEach(transaction => {
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `
+                    <div class="activity-icon">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <div class="activity-info">
+                        <h4>Waste Disposal</h4>
+                        <p>${transaction.weight} kg • ₹${transaction.amount} • ${transaction.dustbinId}</p>
+                        <span class="activity-time">${new Date(transaction.date).toLocaleDateString()}</span>
+                    </div>
+                `;
+                activityContainer.appendChild(activityItem);
+            });
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Initialize demo transactions if none exist
+        if (!localStorage.getItem('transactions')) {
+            const demoTransactions = [
+                {
+                    id: 'TXN001',
+                    userId: 'USR001',
+                    dustbinId: 'DB001',
+                    weight: 2.5,
+                    amount: 12.50,
+                    date: new Date().toISOString(),
+                    status: 'paid'
+                },
+                {
+                    id: 'TXN002',
+                    userId: 'USR001',
+                    dustbinId: 'DB002',
+                    weight: 1.8,
+                    amount: 9.00,
+                    date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+                    status: 'paid'
+                }
+            ];
+            localStorage.setItem('transactions', JSON.stringify(demoTransactions));
+        }
+    </script>
 </body>
 </html>
