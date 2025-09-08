@@ -6,6 +6,7 @@
     <title>User Dashboard - GreenCollect</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -16,17 +17,31 @@
                 <span>GreenCollect</span>
             </div>
             <div class="nav-menu">
-                <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">Dashboard</a>
-                <a href="#transactions" class="nav-link" onclick="showSection('transactions')">Transactions</a>
-                <a href="#profile" class="nav-link" onclick="showSection('profile')">Profile</a>
+                <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="#transactions" class="nav-link" onclick="showSection('transactions')">
+                    <i class="fas fa-history"></i> Transactions
+                </a>
+                <a href="#profile" class="nav-link" onclick="showSection('profile')">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+                <a href="#rewards" class="nav-link" onclick="showSection('rewards')">
+                    <i class="fas fa-gift"></i> Rewards
+                </a>
             </div>
             <div class="user-menu">
-                <div class="user-info">
-                    <span id="userName">User</span>
-                    <i class="fas fa-user-circle"></i>
+                <div class="user-avatar">
+                    <div class="avatar-circle">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <span id="userName">User</span>
+                        <small>Eco Warrior</small>
+                    </div>
                 </div>
                 <button onclick="logout()" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i>
                 </button>
             </div>
         </div>
@@ -35,75 +50,264 @@
     <div class="dashboard-container">
         <!-- Dashboard Section -->
         <section id="dashboard" class="dashboard-section active">
-            <div class="dashboard-header">
-                <h1>Welcome back, <span id="userNameHeader">User</span>!</h1>
-                <p>Track your environmental contribution and earnings</p>
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-content">
+                    <div class="welcome-text">
+                        <h1>Welcome back, <span id="userNameHeader" class="gradient-text">User</span>! 🌱</h1>
+                        <p>You're making a real difference in creating a cleaner environment</p>
+                        <div class="achievement-badge">
+                            <i class="fas fa-trophy"></i>
+                            <span>Eco Champion Level 3</span>
+                        </div>
+                    </div>
+                    <div class="welcome-illustration">
+                        <div class="floating-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="floating-icon delay-1">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="floating-icon delay-2">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Stats Cards -->
+            <!-- Enhanced Stats Cards -->
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-wallet"></i>
+                <div class="stat-card earnings-card">
+                    <div class="stat-background">
+                        <i class="fas fa-coins"></i>
                     </div>
-                    <div class="stat-info">
-                        <h3 id="totalEarnings">₹0</h3>
-                        <p>Total Earnings</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-weight"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="totalWaste">0 kg</h3>
-                        <p>Waste Disposed</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="totalTransactions">0</h3>
-                        <p>Total Disposals</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="ecoPoints">0</h3>
-                        <p>Eco Points</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Activity -->
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <h3>Recent Disposals</h3>
-                    <div class="activity-list" id="recentActivity">
-                        <p>No recent activity found.</p>
-                    </div>
-                </div>
-
-                <div class="dashboard-card">
-                    <h3>Available Dustbins</h3>
-                    <div class="dustbin-list">
-                        <div class="dustbin-item">
-                            <div class="dustbin-info">
-                                <h4>DB001 - Main Market</h4>
-                                <p><i class="fas fa-map-marker-alt"></i> Main Market Square</p>
-                                <p><i class="fas fa-signal"></i> Status: <span class="status-active">Active</span></p>
+                    <div class="stat-content">
+                        <div class="stat-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalEarnings" class="counter">₹0</h3>
+                            <p>Total Earnings</p>
+                            <div class="stat-trend">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12% this month</span>
                             </div>
                         </div>
-                        <div class="dustbin-item">
-                            <div class="dustbin-info">
-                                <h4>DB002 - School Ground</h4>
-                                <p><i class="fas fa-map-marker-alt"></i> Near School</p>
-                                <p><i class="fas fa-signal"></i> Status: <span class="status-active">Active</span></p>
+                    </div>
+                </div>
+
+                <div class="stat-card waste-card">
+                    <div class="stat-background">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalWaste" class="counter">0 kg</h3>
+                            <p>Waste Disposed</p>
+                            <div class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+8% this week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card transactions-card">
+                    <div class="stat-background">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalTransactions" class="counter">0</h3>
+                            <p>Total Disposals</p>
+                            <div class="stat-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+5 this week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card eco-card">
+                    <div class="stat-background">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="ecoPoints" class="counter">0</h3>
+                            <p>Eco Points</p>
+                            <div class="stat-trend positive">
+                                <i class="fas fa-star"></i>
+                                <span>Gold Status</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Recent Activity with Timeline -->
+                <div class="dashboard-card activity-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                        <div class="card-actions">
+                            <button class="btn-icon" onclick="refreshActivity()">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="activity-timeline" id="recentActivity">
+                        <div class="timeline-item">
+                            <div class="timeline-marker success">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Payment Received</h4>
+                                <p>₹12.50 credited to your account</p>
+                                <span class="timeline-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker processing">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Waste Disposal</h4>
+                                <p>2.5 kg organic waste • DB001</p>
+                                <span class="timeline-time">3 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Progress Chart -->
+                <div class="dashboard-card progress-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-bar"></i> Monthly Progress</h3>
+                        <div class="progress-target">
+                            <span>Target: 20kg</span>
+                        </div>
+                    </div>
+                    <div class="progress-content">
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="120" height="120">
+                                <circle class="progress-ring-circle" stroke="#e0e0e0" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                                <circle class="progress-ring-progress" stroke="url(#gradient)" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" stroke-dasharray="326.56" stroke-dashoffset="98"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#4ade80"/>
+                                        <stop offset="100%" style="stop-color:#22c55e"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-value">75%</span>
+                                <span class="progress-label">Complete</span>
+                            </div>
+                        </div>
+                        <div class="progress-details">
+                            <div class="progress-item">
+                                <span class="progress-dot this-month"></span>
+                                <span>This Month: 15.2 kg</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-dot last-month"></span>
+                                <span>Last Month: 12.1 kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Map -->
+                <div class="dashboard-card map-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Nearby Dustbins</h3>
+                        <button class="btn-primary btn-sm" onclick="findNearestDustbin()">
+                            <i class="fas fa-location-arrow"></i> Find Nearest
+                        </button>
+                    </div>
+                    <div class="dustbin-map">
+                        <div class="map-container">
+                            <div class="dustbin-marker active" style="top: 30%; left: 40%;" data-dustbin="DB001">
+                                <div class="marker-pulse"></div>
+                                <i class="fas fa-trash-alt"></i>
+                                <div class="marker-tooltip">
+                                    <strong>DB001</strong><br>
+                                    Main Market<br>
+                                    <span class="status-active">Available</span>
+                                </div>
+                            </div>
+                            <div class="dustbin-marker active" style="top: 60%; left: 70%;" data-dustbin="DB002">
+                                <div class="marker-pulse"></div>
+                                <i class="fas fa-trash-alt"></i>
+                                <div class="marker-tooltip">
+                                    <strong>DB002</strong><br>
+                                    School Ground<br>
+                                    <span class="status-active">Available</span>
+                                </div>
+                            </div>
+                            <div class="dustbin-marker maintenance" style="top: 80%; left: 30%;" data-dustbin="DB003">
+                                <i class="fas fa-tools"></i>
+                                <div class="marker-tooltip">
+                                    <strong>DB003</strong><br>
+                                    Community Center<br>
+                                    <span class="status-maintenance">Maintenance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements & Badges -->
+                <div class="dashboard-card achievements-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement-badge earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="badge-info">
+                                <h4>First Disposal</h4>
+                                <p>Made your first waste disposal</p>
+                            </div>
+                        </div>
+                        <div class="achievement-badge earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="badge-info">
+                                <h4>First Earning</h4>
+                                <p>Earned your first ₹10</p>
+                            </div>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="badge-info">
+                                <h4>Weekly Streak</h4>
+                                <p>Dispose waste for 7 days straight</p>
+                            </div>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="badge-info">
+                                <h4>Eco King</h4>
+                                <p>Dispose 100kg of waste</p>
                             </div>
                         </div>
                     </div>
@@ -111,73 +315,296 @@
             </div>
         </section>
 
-        <!-- Transactions Section -->
+        <!-- Enhanced Transactions Section -->
         <section id="transactions" class="dashboard-section">
             <div class="section-header">
-                <h2>Transaction History</h2>
+                <h2><i class="fas fa-history"></i> Transaction History</h2>
+                <div class="header-actions">
+                    <div class="filter-group">
+                        <select id="monthFilter" class="modern-select">
+                            <option value="all">All Time</option>
+                            <option value="current">This Month</option>
+                            <option value="last">Last Month</option>
+                        </select>
+                        <select id="statusFilter" class="modern-select">
+                            <option value="all">All Status</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                    <button class="btn-secondary" onclick="exportTransactions()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
             </div>
-            <div class="transactions-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Dustbin ID</th>
-                            <th>Weight (kg)</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="transactionsList">
-                        <tr>
-                            <td colspan="5" style="text-align: center; padding: 20px;">No transactions found</td>
-                        </tr>
-                    </tbody>
-                </table>
+            
+            <div class="transactions-container">
+                <div class="transaction-cards" id="transactionCards">
+                    <!-- Transaction cards will be loaded here -->
+                </div>
+                
+                <div class="transactions-table" style="display: none;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Dustbin ID</th>
+                                <th>Weight (kg)</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsList">
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="toggle-btn active" onclick="toggleView('cards')">
+                        <i class="fas fa-th-large"></i> Cards
+                    </button>
+                    <button class="toggle-btn" onclick="toggleView('table')">
+                        <i class="fas fa-table"></i> Table
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- Profile Section -->
+        <!-- Enhanced Profile Section -->
         <section id="profile" class="dashboard-section">
             <div class="section-header">
-                <h2>Profile Information</h2>
+                <h2><i class="fas fa-user"></i> Profile Information</h2>
+                <button class="btn-primary" onclick="editProfile()">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
             </div>
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <h3>Personal Information</h3>
-                    <div class="profile-info">
-                        <div class="info-item">
-                            <label>Full Name</label>
-                            <span id="profileName">-</span>
+            
+            <div class="profile-container">
+                <div class="profile-sidebar">
+                    <div class="profile-avatar">
+                        <div class="avatar-large">
+                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="info-item">
-                            <label>Aadhar Number</label>
-                            <span id="profileAadhar">-</span>
+                        <div class="avatar-info">
+                            <h3 id="profileDisplayName">User Name</h3>
+                            <p>Eco Warrior • Level 3</p>
+                            <div class="profile-stats">
+                                <div class="stat-mini">
+                                    <span class="stat-value" id="profileEarnings">₹0</span>
+                                    <span class="stat-label">Total Earned</span>
+                                </div>
+                                <div class="stat-mini">
+                                    <span class="stat-value" id="profileWaste">0kg</span>
+                                    <span class="stat-label">Waste Disposed</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <label>Phone Number</label>
-                            <span id="profilePhone">-</span>
-                        </div>
-                        <div class="info-item">
-                            <label>Address</label>
-                            <span id="profileAddress">-</span>
+                    </div>
+                    
+                    <div class="profile-progress">
+                        <h4>Progress to Next Level</h4>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span>65% to Level 4</span>
                         </div>
                     </div>
                 </div>
-                <div class="profile-card">
-                    <h3>Bank Information</h3>
-                    <div class="profile-info">
-                        <div class="info-item">
-                            <label>Account Number</label>
-                            <span id="profileAccount">-</span>
+                
+                <div class="profile-content">
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" onclick="showProfileTab('personal')">Personal Info</button>
+                        <button class="tab-btn" onclick="showProfileTab('banking')">Banking Details</button>
+                        <button class="tab-btn" onclick="showProfileTab('preferences')">Preferences</button>
+                    </div>
+                    
+                    <div class="profile-tab-content">
+                        <div id="personal" class="tab-content active">
+                            <div class="info-grid">
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>Full Name</label>
+                                        <span id="profileName">-</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>Aadhar Number</label>
+                                        <span id="profileAadhar">-</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>Phone Number</label>
+                                        <span id="profilePhone">-</span>
+                                    </div>
+                                </div>
+                                <div class="info-card full-width">
+                                    <div class="info-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>Address</label>
+                                        <span id="profileAddress">-</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <label>IFSC Code</label>
-                            <span id="profileIFSC">-</span>
+                        
+                        <div id="banking" class="tab-content">
+                            <div class="info-grid">
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>Account Number</label>
+                                        <span id="profileAccount">-</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>IFSC Code</label>
+                                        <span id="profileIFSC">-</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <label>Account Status</label>
+                                        <span class="status-active">Verified & Active</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <label>Account Status</label>
-                            <span class="status-active">Active</span>
+                        
+                        <div id="preferences" class="tab-content">
+                            <div class="preferences-grid">
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Email Notifications</h4>
+                                        <p>Receive updates about your earnings and transactions</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>SMS Alerts</h4>
+                                        <p>Get instant SMS when payments are processed</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Location Services</h4>
+                                        <p>Help find nearest dustbins based on your location</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Rewards Section -->
+        <section id="rewards" class="dashboard-section">
+            <div class="section-header">
+                <h2><i class="fas fa-gift"></i> Rewards & Offers</h2>
+                <div class="points-display">
+                    <i class="fas fa-star"></i>
+                    <span id="rewardPoints">0 Points Available</span>
+                </div>
+            </div>
+            
+            <div class="rewards-grid">
+                <div class="reward-card available">
+                    <div class="reward-badge">
+                        <span>50 Points</span>
+                    </div>
+                    <div class="reward-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="reward-info">
+                        <h3>Free Coffee</h3>
+                        <p>Get a free coffee from our partner cafes</p>
+                        <button class="btn-primary btn-sm" onclick="redeemReward('coffee')">
+                            <i class="fas fa-gift"></i> Redeem
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="reward-card available">
+                    <div class="reward-badge">
+                        <span>100 Points</span>
+                    </div>
+                    <div class="reward-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="reward-info">
+                        <h3>Shopping Voucher</h3>
+                        <p>₹50 voucher for local eco-friendly stores</p>
+                        <button class="btn-primary btn-sm" onclick="redeemReward('voucher')">
+                            <i class="fas fa-gift"></i> Redeem
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="reward-card locked">
+                    <div class="reward-badge">
+                        <span>200 Points</span>
+                    </div>
+                    <div class="reward-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="reward-info">
+                        <h3>Plant a Tree</h3>
+                        <p>We'll plant a tree in your name</p>
+                        <button class="btn-secondary btn-sm" disabled>
+                            <i class="fas fa-lock"></i> Locked
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="reward-card locked">
+                    <div class="reward-badge">
+                        <span>500 Points</span>
+                    </div>
+                    <div class="reward-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="reward-info">
+                        <h3>Eco Bike Rental</h3>
+                        <p>Free bike rental for a week</p>
+                        <button class="btn-secondary btn-sm" disabled>
+                            <i class="fas fa-lock"></i> Locked
+                        </button>
                     </div>
                 </div>
             </div>
@@ -193,113 +620,350 @@
 
         const user = JSON.parse(currentUser);
 
-        // Initialize dashboard
+        // Initialize dashboard with animations
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('User dashboard loaded for:', user.fullName);
+            console.log('Enhanced user dashboard loaded for:', user.fullName);
             
-            // Update user info
-            const userNameEl = document.getElementById('userName');
-            const userNameHeaderEl = document.getElementById('userNameHeader');
+            // Initialize with fade-in animation
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
             
-            if (userNameEl) userNameEl.textContent = user.fullName;
-            if (userNameHeaderEl) userNameHeaderEl.textContent = user.fullName.split(' ')[0];
+            // Update user info with animation
+            updateUserInfo();
             
-            // Update stats
-            document.getElementById('totalEarnings').textContent = `₹${user.totalEarnings.toLocaleString()}`;
-            document.getElementById('totalWaste').textContent = `${user.totalWaste} kg`;
-            document.getElementById('totalTransactions').textContent = user.totalTransactions;
-            document.getElementById('ecoPoints').textContent = user.ecoPoints;
+            // Load data with staggered animations
+            setTimeout(() => updateStats(), 200);
+            setTimeout(() => loadTransactions(), 400);
+            setTimeout(() => loadRecentActivity(), 600);
             
-            // Update profile
-            document.getElementById('profileName').textContent = user.fullName;
-            document.getElementById('profileAadhar').textContent = `****-****-${user.aadhar.slice(-4)}`;
-            document.getElementById('profilePhone').textContent = `+91 ${user.phone}`;
-            document.getElementById('profileAddress').textContent = user.address;
-            document.getElementById('profileAccount').textContent = `****-****-****-${user.bankAccount.slice(-4)}`;
-            document.getElementById('profileIFSC').textContent = user.ifsc;
+            // Initialize counters
+            initializeCounters();
             
-            // Load transactions
-            loadTransactions();
-            loadRecentActivity();
+            // Start floating animations
+            startFloatingAnimations();
         });
 
-        // Show section
+        // Enhanced user info update
+        function updateUserInfo() {
+            const elements = {
+                userName: document.getElementById('userName'),
+                userNameHeader: document.getElementById('userNameHeader'),
+                profileDisplayName: document.getElementById('profileDisplayName'),
+                profileName: document.getElementById('profileName'),
+                profileAadhar: document.getElementById('profileAadhar'),
+                profilePhone: document.getElementById('profilePhone'),
+                profileAddress: document.getElementById('profileAddress'),
+                profileAccount: document.getElementById('profileAccount'),
+                profileIFSC: document.getElementById('profileIFSC'),
+                profileEarnings: document.getElementById('profileEarnings'),
+                profileWaste: document.getElementById('profileWaste')
+            };
+            
+            if (elements.userName) elements.userName.textContent = user.fullName;
+            if (elements.userNameHeader) elements.userNameHeader.textContent = user.fullName.split(' ')[0];
+            if (elements.profileDisplayName) elements.profileDisplayName.textContent = user.fullName;
+            if (elements.profileName) elements.profileName.textContent = user.fullName;
+            if (elements.profileAadhar) elements.profileAadhar.textContent = `****-****-${user.aadhar.slice(-4)}`;
+            if (elements.profilePhone) elements.profilePhone.textContent = `+91 ${user.phone}`;
+            if (elements.profileAddress) elements.profileAddress.textContent = user.address;
+            if (elements.profileAccount) elements.profileAccount.textContent = `****-****-****-${user.bankAccount.slice(-4)}`;
+            if (elements.profileIFSC) elements.profileIFSC.textContent = user.ifsc;
+            if (elements.profileEarnings) elements.profileEarnings.textContent = `₹${user.totalEarnings}`;
+            if (elements.profileWaste) elements.profileWaste.textContent = `${user.totalWaste}kg`;
+        }
+
+        // Animated stats update
+        function updateStats() {
+            animateCounter('totalEarnings', user.totalEarnings, '₹', '');
+            animateCounter('totalWaste', user.totalWaste, '', ' kg');
+            animateCounter('totalTransactions', user.totalTransactions, '', '');
+            animateCounter('ecoPoints', user.ecoPoints, '', '');
+            animateCounter('rewardPoints', user.ecoPoints, '', ' Points Available');
+        }
+
+        // Counter animation function
+        function animateCounter(elementId, targetValue, prefix = '', suffix = '') {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let currentValue = 0;
+            const increment = targetValue / 100;
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= targetValue) {
+                    currentValue = targetValue;
+                    clearInterval(timer);
+                }
+                element.textContent = prefix + Math.floor(currentValue).toLocaleString() + suffix;
+            }, 20);
+        }
+
+        // Enhanced section switching with animations
         function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.dashboard-section');
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Remove active from all nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Show target section
-            const targetSection = document.getElementById(sectionName);
-            if (targetSection) {
-                targetSection.classList.add('active');
+            // Fade out current section
+            const currentSection = document.querySelector('.dashboard-section.active');
+            if (currentSection) {
+                currentSection.style.opacity = '0';
+                currentSection.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    currentSection.classList.remove('active');
+                    
+                    // Show new section
+                    const targetSection = document.getElementById(sectionName);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        targetSection.style.opacity = '0';
+                        targetSection.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            targetSection.style.opacity = '1';
+                            targetSection.style.transform = 'translateY(0)';
+                        }, 50);
+                    }
+                }, 200);
             }
             
-            // Add active to clicked nav link
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
             event.target.classList.add('active');
         }
 
-        // Load transactions
+        // Enhanced transaction loading with card view
         function loadTransactions() {
             const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
             const userTransactions = transactions.filter(t => t.userId === user.id);
             
-            const tbody = document.getElementById('transactionsList');
-            tbody.innerHTML = '';
+            const cardsContainer = document.getElementById('transactionCards');
+            const tableContainer = document.getElementById('transactionsList');
+            
+            // Load card view
+            cardsContainer.innerHTML = '';
+            userTransactions.forEach((transaction, index) => {
+                const card = document.createElement('div');
+                card.className = 'transaction-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                const statusIcon = transaction.status === 'paid' ? 'fa-check-circle' : 
+                                 transaction.status === 'pending' ? 'fa-clock' : 'fa-times-circle';
+                const statusClass = `status-${transaction.status}`;
+                
+                card.innerHTML = `
+                    <div class="transaction-header">
+                        <div class="transaction-icon ${statusClass}">
+                            <i class="fas ${statusIcon}"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <h4>Waste Disposal</h4>
+                            <p>${transaction.dustbinId} • ${new Date(transaction.date).toLocaleDateString()}</p>
+                        </div>
+                        <div class="transaction-amount">
+                            <span class="amount">₹${transaction.amount}</span>
+                        </div>
+                    </div>
+                    <div class="transaction-details">
+                        <div class="detail-item">
+                            <i class="fas fa-weight"></i>
+                            <span>${transaction.weight} kg</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${transaction.dustbinId}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="${statusClass}">${transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}</span>
+                        </div>
+                    </div>
+                `;
+                
+                cardsContainer.appendChild(card);
+            });
             
             if (userTransactions.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px;">No transactions found</td></tr>';
-                return;
-            }
-            
-            userTransactions.forEach(transaction => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${new Date(transaction.date).toLocaleDateString()}</td>
-                    <td>${transaction.dustbinId}</td>
-                    <td>${transaction.weight}</td>
-                    <td>₹${transaction.amount}</td>
-                    <td><span class="status-${transaction.status}">${transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}</span></td>
+                cardsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No transactions yet</h3>
+                        <p>Start disposing waste to see your transaction history</p>
+                    </div>
                 `;
-                tbody.appendChild(row);
+            }
+        }
+
+        // Profile tab switching
+        function showProfileTab(tabName) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // View toggle for transactions
+        function toggleView(viewType) {
+            const cardsView = document.querySelector('.transaction-cards');
+            const tableView = document.querySelector('.transactions-table');
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            
+            toggleBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (viewType === 'cards') {
+                cardsView.style.display = 'block';
+                tableView.style.display = 'none';
+            } else {
+                cardsView.style.display = 'none';
+                tableView.style.display = 'block';
+            }
+        }
+
+        // Interactive functions
+        function refreshActivity() {
+            const icon = event.target.querySelector('i') || event.target;
+            icon.classList.add('fa-spin');
+            setTimeout(() => {
+                icon.classList.remove('fa-spin');
+                showNotification('Activity refreshed!', 'success');
+            }, 1000);
+        }
+
+        function findNearestDustbin() {
+            showNotification('Finding nearest dustbin...', 'info');
+            setTimeout(() => {
+                showNotification('DB001 - Main Market is closest to you (0.5km)', 'success');
+            }, 2000);
+        }
+
+        function redeemReward(rewardType) {
+            if (user.ecoPoints >= 50) {
+                showNotification(`${rewardType} reward redeemed successfully!`, 'success');
+            } else {
+                showNotification('Not enough points to redeem this reward', 'error');
+            }
+        }
+
+        // Floating animations
+        function startFloatingAnimations() {
+            const floatingIcons = document.querySelectorAll('.floating-icon');
+            floatingIcons.forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.5}s`;
             });
         }
 
-        // Load recent activity
+        // Initialize counters
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                counter.style.opacity = '0';
+                counter.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    counter.style.transition = 'all 0.6s ease';
+                    counter.style.opacity = '1';
+                    counter.style.transform = 'translateY(0)';
+                }, Math.random() * 500);
+            });
+        }
+
+        // Enhanced activity loading
         function loadRecentActivity() {
             const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
-            const userTransactions = transactions.filter(t => t.userId === user.id).slice(0, 3);
+            const userTransactions = transactions.filter(t => t.userId === user.id).slice(0, 5);
             
             const activityContainer = document.getElementById('recentActivity');
-            
-            if (userTransactions.length === 0) {
-                activityContainer.innerHTML = '<p>No recent activity found.</p>';
-                return;
-            }
-            
             activityContainer.innerHTML = '';
-            userTransactions.forEach(transaction => {
-                const activityItem = document.createElement('div');
-                activityItem.className = 'activity-item';
-                activityItem.innerHTML = `
-                    <div class="activity-icon">
-                        <i class="fas fa-trash"></i>
+            
+            userTransactions.forEach((transaction, index) => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.style.animationDelay = `${index * 0.2}s`;
+                
+                const statusClass = transaction.status === 'paid' ? 'success' : 'processing';
+                const statusIcon = transaction.status === 'paid' ? 'fa-check' : 'fa-clock';
+                
+                item.innerHTML = `
+                    <div class="timeline-marker ${statusClass}">
+                        <i class="fas ${statusIcon}"></i>
                     </div>
-                    <div class="activity-info">
-                        <h4>Waste Disposal</h4>
-                        <p>${transaction.weight} kg • ₹${transaction.amount} • ${transaction.dustbinId}</p>
-                        <span class="activity-time">${new Date(transaction.date).toLocaleDateString()}</span>
+                    <div class="timeline-content">
+                        <h4>${transaction.status === 'paid' ? 'Payment Received' : 'Waste Disposal'}</h4>
+                        <p>${transaction.status === 'paid' ? `₹${transaction.amount} credited to your account` : `${transaction.weight} kg • ${transaction.dustbinId}`}</p>
+                        <span class="timeline-time">${getTimeAgo(transaction.date)}</span>
                     </div>
                 `;
-                activityContainer.appendChild(activityItem);
+                
+                activityContainer.appendChild(item);
             });
         }
 
-        // Logout function
+        // Utility functions
+        function getTimeAgo(dateString) {
+            const now = new Date();
+            const date = new Date(dateString);
+            const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+            
+            if (diffInMinutes < 60) return `${diffInMinutes} minutes ago`;
+            if (diffInMinutes < 24 * 60) return `${Math.floor(diffInMinutes / 60)} hours ago`;
+            return `${Math.floor(diffInMinutes / (24 * 60))} days ago`;
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                z-index: 1000;
+                transform: translateX(100%);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                font-weight: 500;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function editProfile() {
+            showNotification('Profile editing feature coming soon!', 'info');
+        }
+
+        function exportTransactions() {
+            showNotification('Exporting transactions...', 'info');
+            setTimeout(() => {
+                showNotification('Transactions exported successfully!', 'success');
+            }, 1500);
+        }
+
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
                 localStorage.removeItem('currentUser');
@@ -327,6 +991,15 @@
                     amount: 9.00,
                     date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
                     status: 'paid'
+                },
+                {
+                    id: 'TXN003',
+                    userId: 'USR001',
+                    dustbinId: 'DB001',
+                    weight: 3.2,
+                    amount: 16.00,
+                    date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                    status: 'pending'
                 }
             ];
             localStorage.setItem('transactions', JSON.stringify(demoTransactions));
